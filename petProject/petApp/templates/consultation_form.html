@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Create Consultation</h1>
+  <form method="post">
+    {% csrf_token %}
+    <label>Pets:</label>
+    <select name="pet">
+        {% for pet in pets %}
+            <option value="{{ pet.id }}">{{ pet.name }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label>Veterinarians:</label>
+    <select name="veterinary">
+        {% for veterinarian in veterinarians %}
+            <option value="{{ veterinarian.id }}">{{ veterinarian.name }}</option>
+        {% endfor %}
+    </select>
+    <br>
+    {{ form.date }}
+    <br>
+    {{ form.description }}
+    <button type="submit">Create</button>
+  </form>
+{% endblock %}

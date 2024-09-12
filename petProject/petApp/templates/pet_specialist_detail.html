@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ pet_specialist.name }}</h1>
+    <p>Specialization: {{ pet_specialist.specialization }}</p>
+    <p><a href="{% url 'pet_specialist_list' %}">Back to pet specialist list</a></p>
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ consultation.pet.name }} ({{ consultation.date }})</h1>
+  <p>Veterinary: {{ consultation.veterinary.name }}</p>
+  <p>Description: {{ consultation.description }}</p>
+  <p><a href="{% url 'consultation_list' %}">Back to consultation list</a></p>
+{% endblock %}

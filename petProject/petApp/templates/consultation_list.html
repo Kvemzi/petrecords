@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Consultations</h1>
+  <form action="" method="get">
+    <input type="search" name="q" value="{{ query }}" placeholder="Search by pet name">
+    <button type="submit">Search</button>
+  </form>
+  <ul>
+    {% for consultation in page_obj %}
+      <li><a href="{% url 'consultation_detail' consultation.pk %}">{{ consultation.pet.name }}</a></li>
+    {% empty %}
+      <p>No consultations available.</p>
+    {% endfor %}
+  </ul>
+  
+
+  
+  <div>
+    {% if page_obj.has_previous %}
+        <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">Previous</a>
+    {% endif %}
+    <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+    {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}">Next</a>
+    {% endif %}
+  </div>
+  <p><a href="{% url 'consultation_create' %}">Create a new consultation </a></p>
+{% endblock %}

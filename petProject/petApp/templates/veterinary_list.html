@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+  <h1>Veterinaries</h1>
+
+  <form action="" method="get">
+
+    <input type="search" name="q" value="{{ query }}" placeholder="Search by name">
+
+    <button type="submit">Search</button>
+
+  </form>
+
+  <ul>
+
+    {% for veterinary in page_obj %}
+
+      <li><a href="{% url 'veterinary_detail' veterinary.pk %}">{{ veterinary.name }}</a></li>
+
+    {% empty %}
+
+      <p>No veterinaries available.</p>
+
+    {% endfor %}
+
+  </ul>
+
+
+
+  <!-- pagination links -->
+
+  <div>
+
+    {% if page_obj.has_previous %}
+
+        <a href="?page={{ page_obj.previous_page_number }}{% if query %}&q={{ query }}{% endif %}">Previous</a>
+
+    {% endif %}
+
+    <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+    {% if page_obj.has_next %}
+
+        <a href="?page={{ page_obj.next_page_number }}{% if query %}&q={{ query }}{% endif %}">Next</a>
+
+    {% endif %}
+
+  </div>
+  
+  <p><a href="{% url 'veterinary_create' %}">Create a new veterinary </a></p>
+{% endblock %}

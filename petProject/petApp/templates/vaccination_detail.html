@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ vaccination.name }}</h1>
+  <p>Description: {{ vaccination.description }}</p>
+  <p><a href="{% url 'vaccination_list' %}">Back to vaccination list</a></p>
+{% endblock %}

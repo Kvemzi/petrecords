@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>{{ veterinary.name }}</h1>
+  <p>Email: {{ veterinary.email }}</p>
+  <p>Phone Number: {{ veterinary.phone_number }}</p>
+  <p>Address: {{ veterinary.address }}</p>
+  <p><a href="{% url 'veterinary_list' %}">Back to veterinary list</a></p>
+{% endblock %}
